@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+    <head>
+        <title>Projekt TSS</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous"></link>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" crossorigin="anonymous"></link>
+    </head>
+    <body>
+        <div>
+            <p th:text="'Wersja JDK: ' + ${jdkVersion}"></p>
+            <p th:text="'Wersja Spring Boot: ' + ${springBootVersion}"></p>
+            <p th:text="'Nazwa aplikacji: ' + ${applicationName}"></p>
+            <p th:text="'Wersja builda: ' + ${buildVersion}"></p>
+            <p th:text="'Czas kompilacji: ' + ${buildTimestamp}"></p>            
+            <a th:href="@{/actuator}">Actuator</a><br/>
+            <a th:href="@{/actuator/info}">Actuator Info</a>
+        </div>
+        
+    </body>
+</html>
