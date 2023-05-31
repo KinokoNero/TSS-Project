@@ -9,14 +9,17 @@
     </head>
     <body>
         <div>
-            <p th:text="'Wersja JDK: ' + ${jdkVersion}"></p>
-            <p th:text="'Wersja Spring Boot: ' + ${springBootVersion}"></p>
-            <p th:text="'Nazwa aplikacji: ' + ${applicationName}"></p>
-            <p th:text="'Wersja builda: ' + ${buildVersion}"></p>
-            <p th:text="'Czas kompilacji: ' + ${buildTimestamp}"></p>            
+            <p th:text="'JDK version: ' + ${jdkVersion}"></p>
+            <p th:text="'Spring Boot version: ' + ${springBootVersion}"></p>
+            <p th:text="'Application name: ' + ${applicationName}"></p>
+            <p th:text="'Build version: ' + ${buildVersion}"></p>
+            <p th:text="'Build timestamp: ' + ${buildTimestamp}"></p>            
             <a th:href="@{/actuator}">Actuator</a><br/>
             <a th:href="@{/actuator/info}">Actuator Info</a>
         </div>
-        
+        <br/>
+        <div>
+            <a th:href="@{/animals}">Animal list</a>
+        </div>
     </body>
 </html>
