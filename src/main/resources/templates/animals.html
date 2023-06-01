@@ -1,13 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
     <head>
         <title>Animal list</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" crossorigin="anonymous"/>
     </head>
     <body>
-        <div>TODO write content</div>
+        <h1>Animal list</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Species</th>
+                    <th>Name</th>
+                    <th>Sex</th>
+                    <th>Age (years)</th>
+                    <th>Weight (kg)</th>
+                    <th>Diet</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="animal : ${animals}">
+                    <td th:text="${animal.id}"></td>
+                    <td th:text="${animal.species}"></td>
+                    <td th:text="${animal.name}"></td>
+                    <td th:text="${animal.sex}"></td>
+                    <td th:text="${animal.age}"></td>
+                    <td th:text="${animal.weight}"></td>
+                    <td th:text="${animal.diet}"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h1>Diet statistics</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Diet</th>
+                    <th>Animal count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="animalDietStat : ${animalsDietStats}">
+                    <td th:text="${animalDietStat.animalDiet}"></td>
+                    <td th:text="${animalDietStat.dietCount}"></td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 </html>

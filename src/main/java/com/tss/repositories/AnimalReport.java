@@ -20,7 +20,7 @@ public class AnimalReport {
         this.animalDiet = animalDiet;
     }
     
-    public int getDietCount() {
+    public long getDietCount() {
         return dietCount;
     }
 

@@ -1,9 +1,10 @@
-drop table if exists City;
+drop table if exists Animal;
 create table Animal (
 id bigint auto_increment primary key,
 species varchar(50) not null,
 name varchar(50) not null,
+sex varchar(6) not null,
 age int not null,
-weight decimal not null,
+weight float not null,
 diet varchar(9) not null
 );

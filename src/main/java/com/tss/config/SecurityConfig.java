@@ -11,7 +11,11 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity                
+        httpSecurity
+                .authorizeRequests().antMatchers("/h2-console/**").permitAll()
+        .and().csrf().ignoringAntMatchers("/h2-console/**")
+        .and().headers().frameOptions().sameOrigin(); //TODO: DELETE THIS AND UNCOMMENT CODE BELOW AFTER TESTING VVV
+                /*
                 .authorizeRequests()
                 .anyRequest()
                 .authenticated()
@@ -20,8 +24,8 @@ public class SecurityConfig {
                 .and()
                 .requiresChannel()
                 .anyRequest()
-                .requiresSecure();                
-        
+                .requiresSecure();
+        */
         return httpSecurity.build();
     }
     

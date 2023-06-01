@@ -1,6 +1,8 @@
 package com.tss.controllers;
 
 import com.tss.repositories.AnimalRepository;
+import com.tss.repositories.IAnimalReport;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +19,11 @@ public class AnimalController {
     
     @RequestMapping("/animals")
     public String showAnimalList(Model model) {
-        model.addAttribute("animals", animalRepository.findAll());        
-        model.addAttribute("animalsDietStats", animalRepository.getAnimalsDietStats());
+        model.addAttribute("animals", animalRepository.findAll());   
+        
+        List<IAnimalReport> animalsDietStats = animalRepository.getAnimalsDietStats();
+        model.addAttribute("animalsDietStats", animalsDietStats);
+        
         return "animals.html";
     }
     

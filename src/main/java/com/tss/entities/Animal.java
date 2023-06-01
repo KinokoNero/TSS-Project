@@ -2,15 +2,14 @@ package com.tss.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Animal implements Serializable {
-    public Animal() {}
-    
-    //private static final long serialVersionUID = 1L;
+public class Animal implements Serializable {    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,14 +18,22 @@ public class Animal implements Serializable {
     
     private String name;
     
+    @Enumerated(EnumType.STRING)
+    private Sex sex;
+    
     private int age;
     
     private double weight;
     
+    @Enumerated(EnumType.STRING)
     private Diet diet;
     
+    private enum Sex {
+        Male, Female
+    }
+    
     private enum Diet {
-        CARNIVORE, HERBIVORE, OMNIVORE;
+        Carnivore, Herbivore, Omnivore
     }
 
     public Long getId() {
@@ -51,6 +58,14 @@ public class Animal implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 
     public int getAge() {
@@ -99,7 +114,7 @@ public class Animal implements Serializable {
 
     @Override
     public String toString() {
-        return "com.tss.entities.Animal[ id=" + id + " ]";
+        return "Animal{id=" + id + ", species=" + species + ", name=" + name + ", sex=" + sex + ", age=" + age + ", weight=" + weight + ", diet=" + diet + "}";
     }
     
 }
