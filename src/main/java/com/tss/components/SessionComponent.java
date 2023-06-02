@@ -20,4 +20,3 @@ public class SessionComponent {
         counter++;
     }
 }
-//TODO: Implement some other session functionality

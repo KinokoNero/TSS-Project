@@ -27,29 +27,5 @@ public class AnimalReport {
     public void setDietCount(int dietCount) {
         this.dietCount = dietCount;
     }
-
-    /*public int getCarnivoreCount() {
-        return carnivoreCount;
-    }
-
-    public void setCarnivoreCount(int carnivoreCount) {
-        this.carnivoreCount = carnivoreCount;
-    }
-
-    public int getHerbivoreCount() {
-        return herbivoreCount;
-    }
-
-    public void setHerbivoreCount(int herbivoreCount) {
-        this.herbivoreCount = herbivoreCount;
-    }
-
-    public int getOmnivoreCount() {
-        return omnivoreCount;
-    }
-
-    public void setOmnivoreCount(int omnivoreCount) {
-        this.omnivoreCount = omnivoreCount;
-    }*/
     
 }

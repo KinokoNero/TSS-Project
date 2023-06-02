@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Entity
 public class Animal implements Serializable {    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String species;
@@ -28,11 +28,11 @@ public class Animal implements Serializable {
     @Enumerated(EnumType.STRING)
     private Diet diet;
     
-    private enum Sex {
+    public enum Sex {
         Male, Female
     }
     
-    private enum Diet {
+    public enum Diet {
         Carnivore, Herbivore, Omnivore
     }
 
