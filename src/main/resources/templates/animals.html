@@ -9,6 +9,7 @@
     </head>
     <body>
         <h1>Animal list</h1>
+        <h2 th:text="'Number of database operations performed in this session: ' + ${counterValue}"></h2>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -19,7 +20,7 @@
                     <th>Age (years)</th>
                     <th>Weight (kg)</th>
                     <th>Diet</th>
-                    <th>Actions</th>
+                    <th sec:authorize="hasRole('ADMIN')">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,7 +32,7 @@
                     <td th:text="${animal.age}"></td>
                     <td th:text="${animal.weight}"></td>
                     <td th:text="${animal.diet}"></td>
-                    <td>
+                    <td sec:authorize="hasRole('ADMIN')">
                         <a th:href="@{/showAddAnimalForm}" class="btn btn-primary">
                             <i class="fas fa-user-plus ml-1"></i>
                         </a>
@@ -60,6 +61,8 @@
                     <td th:text="${animalDietStat.dietCount}"></td>
                 </tr>
             </tbody>
-        </table>
+        </table>    
+        
+        <a th:href="@{/}">Go back</a>
     </body>
 </html>

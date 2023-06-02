@@ -32,6 +32,7 @@ public class AnimalController {
         
         List<IAnimalReport> animalsDietStats = animalRepository.getAnimalsDietStats();
         model.addAttribute("animalsDietStats", animalsDietStats);
+        model.addAttribute("counterValue", sessionComponent.getCounter());
         
         return "animals.html";
     }
@@ -46,6 +47,7 @@ public class AnimalController {
             return "addAnimalForm";
         
         animalRepository.save(animal);
+        sessionComponent.increaseCounter();
         return "redirect:/animals";
     }
     
@@ -65,6 +67,7 @@ public class AnimalController {
         }   
         
         animalRepository.save(animal);
+        sessionComponent.increaseCounter();
         return "redirect:/animals";
     }
     
@@ -74,6 +77,7 @@ public class AnimalController {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid animal Id: " + id));
         
         animalRepository.delete(animal);
+        sessionComponent.increaseCounter();
         return "redirect:/animals";
     }
 }
