@@ -17,10 +17,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .cors()//test
-                .and()//test
                 .authorizeRequests()
-                .antMatchers("/animals/json").hasRole("ADMIN")//test
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -28,7 +25,11 @@ public class SecurityConfig {
                 .and()
                 .requiresChannel()
                 .anyRequest()
-                .requiresSecure();
+                .requiresSecure()
+                .and()
+                .httpBasic()
+                .and()
+                .csrf().disable();
         
         return httpSecurity.build();
     }

@@ -68,8 +68,8 @@ function displayTable(data) {
                     '</select>' +
                 '</td>' +
                 '<td>' +
-                    '<button type="button" onclick="updateProduct(' + data[i].id + ');"><i class="fas fa-user-edit ml-1"></i></button>' +
-                    '<button type="button" onclick="deleteProduct(' + data[i].id + ');"><i class="fas fa-user-times ml-1"></i></button>' +
+                    '<button type="button" onclick="updateAnimal(' + data[i].id + ');"><i class="fas fa-user-edit ml-1"></i></button>' +
+                    '<button type="button" onclick="deleteAnimal(' + data[i].id + ');"><i class="fas fa-user-times ml-1"></i></button>' +
                 '</td>' +
                 '</tr>';
     }
@@ -78,7 +78,7 @@ function displayTable(data) {
     document.getElementById("result").innerHTML = out;
 }
 
-function createProduct() {
+function createAnimal() {
     fetch('https://localhost:8443/ProjektTssKucharskiIgorIo3/animals/json',
         {
             method: 'POST',
@@ -100,7 +100,7 @@ function createProduct() {
     .then(data => console.log(data));
 }
 
-function updateProduct(id) {
+function updateAnimal(id) {
     fetch('https://localhost:8443/ProjektTssKucharskiIgorIo3/animals/json/' + id,
         {
             method: 'PUT',
@@ -122,7 +122,7 @@ function updateProduct(id) {
     .then(data => console.log(data));
 }
 
-function deleteProduct(id) {
+function deleteAnimal(id) {
     fetch('https://localhost:8443/ProjektTssKucharskiIgorIo3/animals/json/' + id,
         {
             method: 'DELETE'
