@@ -17,9 +17,10 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                //.authorizeRequests().antMatchers("/h2-console/**").permitAll().and().csrf().ignoringAntMatchers("/h2-console/**").and().headers().frameOptions().sameOrigin(); //TODO: DELETE THIS AND UNCOMMENT CODE BELOW AFTER TESTING VVV
-                
+                .cors()//test
+                .and()//test
                 .authorizeRequests()
+                .antMatchers("/animals/json").hasRole("ADMIN")//test
                 .anyRequest()
                 .authenticated()
                 .and()

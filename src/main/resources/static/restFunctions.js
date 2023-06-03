@@ -1,3 +1,16 @@
+var sexes;
+var diets;
+
+fetch('https://localhost:8443/ProjektTssKucharskiIgorIo3/animals/json/enums')
+    .then(response => response.json())
+    .then(data => {
+        sexes = data.sexes;
+        diets = data.diets;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
 function getAnimalList() {
     fetch('https://localhost:8443/ProjektTssKucharskiIgorIo3/animals/json')
             .then(response => response.json())
@@ -19,6 +32,7 @@ function displayTable(data) {
             '<th>Age</th>' + 
             '<th>Weight</th>' + 
             '<th>Diet</th>'+ 
+            '<th>Actions</th>' +
             '</tr>' + 
             '</thead>' + 
             '<tbody>';
@@ -29,10 +43,34 @@ function displayTable(data) {
                 '<td>' + data[i].id + '</th>' +
                 '<td><input type="text" id="species_' + data[i].id + '" value="' + data[i].species + '" size="20"></td>' +
                 '<td><input type="text" id="name_' + data[i].id + '" value="' + data[i].name + '" size="20"></td>' +                
-                '<td><input type="text" id="sex_' + data[i].id + '" value="' + data[i].sex + '" size="20"></td>' +
+                '<td>' +
+                    '<select id="sex_' + data[i].id + '">';
+                    sexes.forEach(function(sex) {
+                        out += '<option value="' + sex + '"';
+                        if(sex === data[i].sex)
+                            out += ' selected';
+                        out += '>' + sex + '</option>';
+                    });
+                    out +=
+                    '</select>' +
+                '</td>' +
                 '<td><input type="text" id="age_' + data[i].id + '" value="' + data[i].age + '" size="20"></td>' +
                 '<td><input type="text" id="weight_' + data[i].id + '" value="' + data[i].weight + '" size="20"></td>' +
-                '<td><input type="text" id="diet_' + data[i].id + '" value="' + data[i].diet + '" size="20"></td>' +
+                '<td>' +
+                    '<select id="diet_' + data[i].id + '">';
+                    diets.forEach(function(diet) {
+                        out += '<option value="' + diet + '"';
+                        if(diet === data[i].diet)
+                            out += ' selected';
+                        out += '>' + diet + '</option>';
+                    });
+                    out +=
+                    '</select>' +
+                '</td>' +
+                '<td>' +
+                    '<button type="button" onclick="updateProduct(' + data[i].id + ');"><i class="fas fa-user-edit ml-1"></i></button>' +
+                    '<button type="button" onclick="deleteProduct(' + data[i].id + ');"><i class="fas fa-user-times ml-1"></i></button>' +
+                '</td>' +
                 '</tr>';
     }
     out += '</tbody>' + 

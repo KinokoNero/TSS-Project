@@ -5,11 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class ApplicationRestController {
+public class AnimalRestController {
     
     @RequestMapping("/animals/rest")
-    public String page(Model model) {
+    public String showAnimalListRest(Model model) {        
         return "animalsRest.html";
     }
-    
 }

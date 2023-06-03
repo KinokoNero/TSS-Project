@@ -2,9 +2,13 @@ package com.tss.controllers;
 
 import com.tss.entities.Animal;
 import com.tss.repositories.AnimalRepository;
+import java.util.Arrays;
+import java.util.HashMap;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -71,4 +75,21 @@ public class ApplicationJsonController {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Error message")
     public void handleError() {}
+    
+    @GetMapping("/enums")
+    public ResponseEntity<Map<String, List<String>>> getEnums() {
+        Map<String, List<String>> enumsMap = new HashMap<>();
+        
+        List<String> sexes = Arrays.stream(com.tss.entities.Animal.Sex.values())
+                                    .map(Enum::name)
+                                    .collect(Collectors.toList());
+        enumsMap.put("sexes", sexes);
+        
+        List<String> diets = Arrays.stream(com.tss.entities.Animal.Diet.values())
+                                   .map(Enum::name)
+                                   .collect(Collectors.toList());
+        enumsMap.put("diets", diets);
+        
+        return ResponseEntity.ok(enumsMap);
+    }
 }
