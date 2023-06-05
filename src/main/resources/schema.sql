@@ -1,5 +1,4 @@
-drop table if exists Animal;
-create table Animal (
+create table if not exists Animal (
 id bigint auto_increment primary key,
 species varchar(50) not null,
 name varchar(50) not null,

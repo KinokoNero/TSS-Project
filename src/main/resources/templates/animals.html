@@ -33,9 +33,6 @@
                     <td th:text="${animal.weight}"></td>
                     <td th:text="${animal.diet}"></td>
                     <td sec:authorize="hasRole('ADMIN')">
-                        <!--<a th:href="@{/showAddAnimalForm}" class="btn btn-primary">
-                            <i class="fas fa-user-plus ml-1"></i>
-                        </a>-->
                         <a th:href="@{/showEditAnimalForm/{id} (id=${animal.id})}" class="btn btn-primary">
                             <i class="fas fa-user-edit ml-1"></i>
                         </a>
