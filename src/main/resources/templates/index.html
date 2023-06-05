@@ -18,10 +18,16 @@
             <a th:href="@{/actuator/info}">Actuator Info</a>
         </div>
         <br/>
-        <a th:href="@{/animals}">Animal list</a>
+        <div>
+            <a th:href="@{/animals}">Animal list</a>
+            <br/>
+            <a th:href="@{/websocket}">WebSocket</a>
+            <br/>
+            <a th:href="@{/products}">Product list</a>
+        </div>
         <br/>
-        <a th:href="@{/websocket}">WebSocket</a>
-        <br/>
-        <a th:href="@{/logout}">Logout</a>
+        <div>
+            <a th:href="@{/logout}" class="btn btn-primary">Logout<i class="fas fa-sign-out-alt"></i></a>
+        </div>
     </body>
 </html>

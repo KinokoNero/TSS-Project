@@ -10,6 +10,12 @@ fetch('https://localhost:8443/ProjektTssKucharskiIgorIo3/animals/json/enums')
     .catch(error => {
         console.error('Error:', error);
     });
+    
+function increaseSessionCounter() {
+    fetch('https://localhost:8443/ProjektTssKucharskiIgorIo3/sessionCounter', {
+        method: 'POST'
+    });
+}
 
 function getAnimalList() {
     fetch('https://localhost:8443/ProjektTssKucharskiIgorIo3/animals/json')
@@ -98,6 +104,8 @@ function createAnimal() {
     )
     .then(response => response.json)
     .then(data => console.log(data));
+    
+    increaseSessionCounter();
 }
 
 function updateAnimal(id) {
@@ -120,6 +128,8 @@ function updateAnimal(id) {
     )
     .then(response => response.json)
     .then(data => console.log(data));
+    
+    increaseSessionCounter();
 }
 
 function deleteAnimal(id) {
@@ -127,6 +137,8 @@ function deleteAnimal(id) {
         {
             method: 'DELETE'
         });
+        
+    increaseSessionCounter();
 }
 
 window.addEventListener("load", getAnimalList, false);

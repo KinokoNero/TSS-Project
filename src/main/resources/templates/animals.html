@@ -49,27 +49,31 @@
         <a sec:authorize="hasRole('ADMIN')" th:href="@{/showAddAnimalForm}" class="btn btn-primary">
             <i class="fas fa-user-plus ml-1"></i>
         </a>
+        <br/><br/>
+        <div>
+            <a th:href="@{/animals/json}">Show as JSON</a>
+            <br/>
+            <a sec:authorize="hasRole('ADMIN')" th:href="@{/animals/rest}">Show REST table</a>
+        </div>
         <br/>
-        <a th:href="@{/animals/json}">Show as JSON</a>
+        <div>
+            <h1>Diet statistics</h1>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Diet</th>
+                        <th>Animal count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="animalDietStat : ${animalsDietStats}">
+                        <td th:text="${animalDietStat.animalDiet}"></td>
+                        <td th:text="${animalDietStat.dietCount}"></td>
+                    </tr>
+                </tbody>
+            </table>    
+        </div>
         <br/>
-        <a sec:authorize="hasRole('ADMIN')" th:href="@{/animals/rest}">Show REST table</a>
-        <br/>
-        <h1>Diet statistics</h1>
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Diet</th>
-                    <th>Animal count</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="animalDietStat : ${animalsDietStats}">
-                    <td th:text="${animalDietStat.animalDiet}"></td>
-                    <td th:text="${animalDietStat.dietCount}"></td>
-                </tr>
-            </tbody>
-        </table>    
-        
         <a th:href="@{/}">Go back</a>
     </body>
 </html>
