@@ -18,6 +18,7 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
+                .antMatchers("/animals/rest/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
